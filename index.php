@@ -32,7 +32,7 @@ if (empty($path)) {
     <p><b>这是一个 Codemao API 反向代理</b></p>
     <p>使用方法：把 <code>api.codemao.cn</code> 换成此域名即可</p>
     <p>公共服务，不记录请求内容</p>
-    <a href="https://github.com/Wangs-official/CodemaoAPI_CFProxy">
+    <a href="https://github.com/Wangs-official/CodemaoAPI_Proxy">
       GitHub 仓库（记得 Star）
     </a>
   </div>
