@@ -46,6 +46,15 @@ export async function onRequest(context) {
     );
   }
 
+  if (params.path.join("/") === "testcma") {
+    return new Response(JSON.stringify({ status: "ok" }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+    });
+  }
+
   const targetBase = "https://api.codemao.cn";
   const incomingUrl = new URL(request.url);
   const targetUrl = new URL(`${targetBase}/${params.path.join("/")}`);
@@ -57,9 +66,6 @@ export async function onRequest(context) {
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
   );
   headers.set("Accept", "application/json, text/plain, */*");
-  headers.set("Accept-Language", "zh-CN,zh;q=0.9");
-  headers.set("Referer", "https://codemao.cn/");
-  headers.set("Origin", "https://codemao.cn");
 
   const cookie = request.headers.get("cookie");
   if (cookie) headers.set("Cookie", cookie);
@@ -84,18 +90,22 @@ export async function onRequest(context) {
 
   const response = await fetch(proxyRequest);
 
-  const newHeaders = new Headers();
-  newHeaders.set("Content-Type", "application/json;charset=UTF-8");
-  newHeaders.set("Vary", "Accept-Encoding");
-  newHeaders.set(
-    "Strict-Transport-Security",
-    "max-age=15724800; includeSubDomains"
-  );
-  newHeaders.set("Connection", "keep-alive");
-  newHeaders.set("Date", new Date().toUTCString());
+  const responseHeaders = new Headers();
+  
+  for (const [key, value] of response.headers.entries()) {
+    const lowerKey = key.toLowerCase();
+    if (!lowerKey.startsWith("cf-") && 
+        lowerKey !== "server" && 
+        lowerKey !== "via" &&
+        lowerKey !== "nel" &&
+        lowerKey !== "report-to" &&
+        lowerKey !== "alt-svc") {
+      responseHeaders.set(key, value);
+    }
+  }
 
   return new Response(response.body, {
     status: response.status,
-    headers: newHeaders,
+    headers: responseHeaders,
   });
 }
