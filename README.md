@@ -1,9 +1,9 @@
 # CodemaoAPI_Proxy
 反向代理编程猫API服务
 
-公共服务：[https://cmaproxy.pages.dev/](https://cmaproxy.pages.dev)
+公共服务：[https://api.hachimlab.top/](https://api.hachimlab.top)
 
-PHP版本公共服务：[http://cmaproxy.other.mewbaka.cn/](http://cmaproxy.other.mewbaka.cn/)
+PHP版本公共服务：[https://phpapi.hachimlab.top/](https://phpapi.hachimlab.top)
 
 PHP版本公共服务部署在美国虚拟主机，速度略慢
 
@@ -21,7 +21,7 @@ PHP版本公共服务部署在美国虚拟主机，速度略慢
 
 原API地址：`https://api.codemao.cn/web/forums/notice-boards`
 
-代理后的API地址：`https://cmaproxy.pages.dev/web/forums/notice-boards`
+代理后的API地址：`https://api.hachimlab.top/web/forums/notice-boards`
 
 所有请求方式/Header都和请求官方API时一样，这个东西只不过就是为了骗过某些检测
 
@@ -35,7 +35,7 @@ PHP版本公共服务部署在美国虚拟主机，速度略慢
 
 使用GET方式请求 `/testcma`，返回为 `{"status":"ok"}` 则为测试通过
 
-`curl https://cmaproxy.pages.dev/testcma`
+`curl https://api.hachimlab.top/testcma`
 
 ## 合规
 
