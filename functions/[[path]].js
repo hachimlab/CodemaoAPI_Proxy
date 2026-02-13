@@ -30,9 +30,10 @@ export async function onRequest(context) {
     <h2>早上好~ Sensei~</h2>
     <p><b>这是一个运行在 Cloudflare 上的 Codemao API 反向代理</b></p>
     <p>使用方法：把 <code>api.codemao.cn</code> 换成此域名即可</p>
-    <p>不过，如果是在Cloudflare上部署，则不能在CoCo里使用，日记可以在README中找到链接</p>
+    <p>PHP反代服务：https://phpapi.hachimlab.top/</p>
+    <p>若要在CoCo中使用，请使用PHP版本反代服务</p>
     <p>公共服务，不记录请求内容</p>
-    <a href="https://github.com/Wangs-official/CodemaoAPI_Proxy">
+    <a href="https://github.com/hachimlab/CodemaoAPI_Proxy">
       GitHub 仓库（记得 Star）
     </a>
   </div>
